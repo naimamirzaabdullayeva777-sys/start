@@ -8,6 +8,7 @@ from .views import (
     MovieList,
     RegisterView,
     LoginView,
+    
     CurrentUserView,
     LogoutView,
 )
