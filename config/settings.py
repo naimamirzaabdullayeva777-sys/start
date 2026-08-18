@@ -35,7 +35,7 @@ INSTALLED_APPS = [
 
 
 # ======================
-# Middleware
+# Middleware (NO CsrfViewMiddleware)
 # ======================
 
 MIDDLEWARE = [
@@ -139,6 +139,7 @@ CORS_ALLOW_CREDENTIALS = True
 
 CSRF_TRUSTED_ORIGINS = [
     "https://learnme.up.railway.app",
+    "https://start-production-c765.up.railway.app",
 ]
 
 
@@ -157,6 +158,9 @@ CSRF_COOKIE_SECURE = True
 # ======================
 
 REST_FRAMEWORK = {
+    "DEFAULT_AUTHENTICATION_CLASSES": [
+        "Base.authentication.CsrfExemptSessionAuthentication",
+    ],
     "DEFAULT_PERMISSION_CLASSES": [
         "rest_framework.permissions.AllowAny",
     ],
