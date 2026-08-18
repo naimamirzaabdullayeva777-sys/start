@@ -10,7 +10,7 @@ SECRET_KEY = os.environ.get(
     "django-insecure-zt%x&mqb_l98o^7qy#$w96pes#15$d5g&8&qbeeja9ijz)0=pu",
 )
 
-DEBUG = os.environ.get("DEBUG", "False").lower() in ("true", "1", "yes")
+DEBUG = os.environ.get("DEBUG", "True").lower() in ("true", "1", "yes")
 
 ALLOWED_HOSTS = os.environ.get("ALLOWED_HOSTS", "*").split(",")
 
@@ -169,3 +169,29 @@ AUTH_USER_MODEL = "Base.User"
 
 
 DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
+
+
+# ======================
+# Logging
+# ======================
+
+LOGGING = {
+    "version": 1,
+    "disable_existing_loggers": False,
+    "handlers": {
+        "console": {
+            "class": "logging.StreamHandler",
+        },
+    },
+    "root": {
+        "handlers": ["console"],
+        "level": "DEBUG",
+    },
+    "loggers": {
+        "django": {
+            "handlers": ["console"],
+            "level": "DEBUG",
+            "propagate": False,
+        },
+    },
+}
